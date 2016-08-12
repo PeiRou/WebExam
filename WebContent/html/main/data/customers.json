@@ -1,0 +1,9 @@
+{
+    success: true,
+    customers: [
+        {customerId: 101, aa: 'Enabled', lastName: 'Checked Box', os: 'Android', active: true},
+        {customerId: 102, aa: 'Disabled', lastName: 'Checked Box', os: 'iOS', active: true},
+        {customerId: 103, aa: 'Enabled', lastName: 'UnChecked Box', os: 'Android', active: false},
+        {customerId: 104, aa: 'Disabled', lastName: 'UnChecked Box', os: 'iOS', active: false}
+    ]
+}
