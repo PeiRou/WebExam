@@ -13,6 +13,9 @@ dependencies {						//宣告dependency library
 	compile group: 'org.json', name: 'json', version: '20160212'
 	compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.7.4'
 	compile group: 'com.google.code.gson', name: 'gson', version: '2.6.2'	
+	// https://mvnrepository.com/artifact/javax.websocket/javax.websocket-api
+	compile group: 'javax.websocket', name: 'javax.websocket-api', version: '1.1'
+	
 }
 
 import org.gradle.plugins.ide.eclipse.model.Facet
