@@ -1,24 +1,26 @@
 package _01_account.model;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import org.json.JSONObject;
 
 import _01_account.dao.Accjdbc;
+import _02_MenuTree.dao.Treejdbc;
 
 public class chkService {
+	private Treejdbc treejdbc = new Treejdbc();
 	private Accjdbc accjdbc = new Accjdbc();
 	
 	public JSONObject login(String acc, String psd) {
 		JSONObject json = new JSONObject();
-		boolean respose = false;
-		json.put("AccUid","");
+		List JSONObjectList = new LinkedList();
 		
-		List bean = accjdbc.select(acc);
+		
+		List bean = accjdbc.select(psd);
 		if (!bean.isEmpty()) {
 			JSONObject obj = (JSONObject) bean.get(0);
 			if (psd.equals(obj.getString("Pwd"))) {
-				respose = true;
 				json.put("AccUid",obj.getString("AccUid"));
 			}else{
 				JSONObject json2 = new JSONObject();
@@ -32,7 +34,6 @@ public class chkService {
 			json2.put("portOfLoading","無效帳號");
 			json.put("errors",json2);
 		}
-		json.put("success",respose);
 		
 		return json;
 	}
