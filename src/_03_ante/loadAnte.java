@@ -12,12 +12,12 @@ import javax.servlet.http.HttpSession;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import _01_account.model.chkService;
+import _01_account.model.mappingTree;
 @WebServlet(
 		urlPatterns={"/_03_ante/loadAnte.controller"}
 		)
 public class loadAnte extends HttpServlet{
-	private chkService chkService = new chkService();
+	private mappingTree chkService = new mappingTree();
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
