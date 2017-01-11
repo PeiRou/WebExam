@@ -12,13 +12,11 @@ import javax.servlet.http.HttpSession;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import _01_account.model.chkService;
 @WebServlet(
 		urlPatterns={"/_02_MenuTree/CountryServlet.controller"}
 		)
 public class menuTreeServlet extends HttpServlet{
-	private chkService chkService = new chkService();
+	private makeTreeService treeService = new makeTreeService();
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,22 +29,36 @@ public class menuTreeServlet extends HttpServlet{
 		
 		JSONObject json = new JSONObject();
 		JSONArray jsAry = new JSONArray();
-		try {			
-			//json = chkService.login(acc, pwd);
-//			if(json.get("AccUid")!=null){
-//				System.out.println(json.get("AccUid"));				
-//			}
+		treeService.exct();
+		try {						
 			json.put("text","detention");
 			json.put("leaf",true);
 			jsAry.put(json);
+			
 			JSONObject json1 = new JSONObject();
 			json1.put("text","homework");
 			json1.put("leaf",true);
 			jsAry.put(json1);
+			
 			JSONObject json2 = new JSONObject();
-			json2.put("text","buy lottery tickets");
-			json2.put("leaf",true);
+			JSONArray json2Ary = new JSONArray();
+			
+			JSONObject json21 = new JSONObject();
+			json21.put("text","book report");
+			json21.put("leaf",true);
+			json2Ary.put(json21);
+			
+			JSONObject json22 = new JSONObject();
+			json22.put("text","algebra");
+			json22.put("leaf",true);
+			json2Ary.put(json22);
+			
+			
+			json2.put("text","buy1 lottery tickets");
+			json2.put("expanded",true);
+			json2.put("children",json2Ary);
 			jsAry.put(json2);
+			
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}		
