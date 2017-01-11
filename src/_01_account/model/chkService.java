@@ -6,10 +6,8 @@ import java.util.List;
 import org.json.JSONObject;
 
 import _01_account.dao.Accjdbc;
-import _02_MenuTree.dao.Treejdbc;
 
 public class chkService {
-	private Treejdbc treejdbc = new Treejdbc();
 	private Accjdbc accjdbc = new Accjdbc();
 	
 	public JSONObject login(String acc, String psd) {
