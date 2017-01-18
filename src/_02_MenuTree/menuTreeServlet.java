@@ -29,36 +29,10 @@ public class menuTreeServlet extends HttpServlet{
 		
 		JSONObject json = new JSONObject();
 		JSONArray jsAry = new JSONArray();
-		treeService.exct();
+		System.out.println("開始鏟土囉");
 		try {						
-			json.put("text","detention");
-			json.put("leaf",true);
-			jsAry.put(json);
-			
-			JSONObject json1 = new JSONObject();
-			json1.put("text","homework");
-			json1.put("leaf",true);
-			jsAry.put(json1);
-			
-			JSONObject json2 = new JSONObject();
-			JSONArray json2Ary = new JSONArray();
-			
-			JSONObject json21 = new JSONObject();
-			json21.put("text","book report");
-			json21.put("leaf",true);
-			json2Ary.put(json21);
-			
-			JSONObject json22 = new JSONObject();
-			json22.put("text","algebra");
-			json22.put("leaf",true);
-			json2Ary.put(json22);
-			
-			
-			json2.put("text","buy1 lottery tickets");
-			json2.put("expanded",true);
-			json2.put("children",json2Ary);
-			jsAry.put(json2);
-			
+			json = treeService.exct();
+			jsAry.put(json);			
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}		

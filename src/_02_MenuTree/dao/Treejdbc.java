@@ -26,7 +26,7 @@ public class Treejdbc {
 		}
 	}
 	
-	private final String SELECT = "select case when up_class_node IS NOT NULL then up_class_node else 0 end as up_class_node_DSY,* from ROU_DYNAMIC_TREE_PARM_VAL ORDER BY up_class_node_DSY,CLASS_LEVEL,CLASS_NODE";
+	private final String SELECT = "SELECT  ROW_NUMBER() OVER (ORDER BY PK_ROU_DYNAMIC_TREE_PARM_VAL ASC ) AS RowNum,* ,case when up_class_node IS NOT NULL then up_class_node else 0 end as up_class_node_DSY FROM ROU_DYNAMIC_TREE_PARM_VAL ";
 
 	public List select() {
 		List JSONObjectList = null;
@@ -39,15 +39,17 @@ public class Treejdbc {
 			JSONObjectList = new LinkedList();
 			while (rset.next()) {
 				JSONObject obj = new JSONObject();
+				obj.put("RowNum", rset.getString("RowNum"));
+				obj.put("CLASS_NODE", rset.getString("CLASS_NODE"));
 				obj.put("PROD_CDE", rset.getString("PROD_CDE"));
 				obj.put("PROD_DESC", rset.getString("PROD_DESC"));
-				obj.put("CLASS_NODE", rset.getString("CLASS_NODE"));
 				obj.put("CLASS_NODE_DESC", rset.getString("CLASS_NODE_DESC"));
 				obj.put("CLASS_LEVEL", rset.getString("CLASS_LEVEL"));
 				obj.put("IS_TOP", rset.getString("IS_TOP"));
 				obj.put("IS_LEAF", rset.getString("IS_LEAF"));
 				obj.put("up_class_node", rset.getString("up_class_node"));
-				obj.put("excute", false);
+				obj.put("up_class_node_DSY", rset.getString("up_class_node_DSY"));
+				obj.put("excute", "1");
 //				obj.put("RECRATE_1_PARM_VAL", rset.getString("RECRATE_1_PARM_VAL"));
 //				obj.put("RECRATE_1_SRC_CNT", rset.getString("RECRATE_1_SRC_CNT"));
 //				obj.put("RECRATE_2_PARM_VAL", rset.getString("RECRATE_2_PARM_VAL"));
@@ -119,7 +121,7 @@ public class Treejdbc {
 				}
 			}
 		}
-		System.out.println(JSONObjectList.toString());
+		System.out.println("原始資料"+JSONObjectList.toString());
 		return JSONObjectList;
 	}
 }
