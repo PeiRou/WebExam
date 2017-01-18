@@ -49,7 +49,7 @@ public class Treejdbc {
 				obj.put("IS_LEAF", rset.getString("IS_LEAF"));
 				obj.put("up_class_node", rset.getString("up_class_node"));
 				obj.put("up_class_node_DSY", rset.getString("up_class_node_DSY"));
-				obj.put("excute", "1");
+				obj.put("excute", "1");													//要額外加這個設定，才能在判斷的時候不重覆再處理一次
 //				obj.put("RECRATE_1_PARM_VAL", rset.getString("RECRATE_1_PARM_VAL"));
 //				obj.put("RECRATE_1_SRC_CNT", rset.getString("RECRATE_1_SRC_CNT"));
 //				obj.put("RECRATE_2_PARM_VAL", rset.getString("RECRATE_2_PARM_VAL"));

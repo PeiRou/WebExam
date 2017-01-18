@@ -16,13 +16,13 @@ public class makeTreeService {
 	public JSONObject exct() {
 		bean = treejdbc.select();
 		jsonTree = new JSONObject();
-		JSONObject objroot = null;
+		JSONObject objroot = null;										//用來擺放root的物件
 		JSONArray bagJsAry = new JSONArray();
 		ArrayList<Integer> bunchNum  = new ArrayList<>();
 		
 		//從最下層的先分類，把一個個樹葉分類
 		for (int i = bean.size()-1; i >= 0; i--) {
-			JSONArray bunchJsAry = new JSONArray();
+			JSONArray bunchJsAry = new JSONArray();						//這個陣列的目的是為了把父階層一樣的子階層放一起
 			JSONObject obj = (JSONObject)bean.get(i);
 			//同個子階層串接起來，唯獨不串CLASS_NODE=0
 			if(obj.getString("excute")=="1" && !obj.getString("CLASS_NODE").equals("0")){
