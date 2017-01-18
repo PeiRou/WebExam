@@ -2,6 +2,7 @@ Ext.define('TR.view.CountryTree', {
     extend: 'Ext.tree.Panel',
     alias: 'widget.countryTree',
     store: 'Countries',
+    sortableColumns	: false,
     viewConfig: {
         plugins: {
             ptype: 'treeviewdragdrop'

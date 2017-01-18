@@ -1,5 +1,8 @@
 Ext.define('TR.store.Countries', {
     extend: 'Ext.data.TreeStore',
+    defaults:{
+    	folderSort: false,
+    },
     proxy: {
         type: 'ajax',
         url : '../../_02_MenuTree/CountryServlet.controller'
@@ -9,10 +12,12 @@ Ext.define('TR.store.Countries', {
         id: 'myTree',
         expanded: true
     },
-    folderSort: true,
-    sorters: [{
-        property: 'text',
-        direction: 'ASC'
-    }]
-   
+    autoLoad	:	true,
+//    sorters: [
+//              {
+//				    property: 'RowNum',
+//				    direction: 'ASC'
+//				}
+//    ]
+    sorters: null,
 });
