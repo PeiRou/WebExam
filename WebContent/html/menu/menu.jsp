@@ -8,7 +8,7 @@
 <!-- Extjs Core CSS -->
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/ext-5.1.1/packages/ext-theme-classic/build/resources/ext-theme-classic-all.css" />
 <!-- Bootstrap Core CSS -->
-<link href="<%=request.getContextPath()%>/css/bootstrap.min.css" rel="stylesheet">
+<%-- <link href="<%=request.getContextPath()%>/css/bootstrap.min.css" rel="stylesheet"> --%>
 <!-- Icon -->
 <link rel="apple-touch-icon" href="<%=request.getContextPath()%>/images/logo.png">
 <link rel="icon" href="<%=request.getContextPath()%>/images/logo.png">
